@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style type="text/css">
+		/*
+ * MENU BUTTON
+ */
+@import url('https://fonts.googleapis.com/css?family=K2D');
+.menu__toggler {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  height: 28px;
+  width: 28px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.menu__toggler span, .menu__toggler span::before, .menu__toggler span::after {
+  position: absolute;
+  content: '';
+  width: 28px;
+  height: 2.5px;
+  background: #000;
+  border-radius: 20px;
+  transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.menu__toggler span::before {
+  top: -8px;
+}
+.menu__toggler span::after {
+  top: 8px;
+}
+.menu__toggler.active > span {
+  background: transparent;
+}
+.menu__toggler.active > span::before, .menu__toggler.active > span::after {
+  background: #005c9c;
+  top: 0px;
+}
+.menu__toggler.active > span::before {
+  transform: rotate(-225deg);
+}
+.menu__toggler.active > span::after {
+  transform: rotate(225deg);
+}
+/*
+ * SLIDING MENU PANEL
+ */
+.menu {
+  position: absolute;
+  left: -30%;
+  z-index: 998;
+  color: #fff;
+  background: rgba(0, 191, 166, 0.6);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  width: 30%;
+  height: 100%;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
+  top: 0;
+}
+.menu p:hover{
+	letter-spacing: 2px;
+}
+@media only screen and (max-width: 600px) {
+  .menu {
+    width: 250px;
+    left: -250px;
+    padding: 50px;
+  }
+}
+.menu.active {
+  left: 0;
+}
+.menu a {
+	color:inherit;
+	text-decoration: none;
+}
+.menu p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  transition: .5s;
+}
+/*
+ * BASIC STYLES
+ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  font-family: 'K2D', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+h1 {
+  color: #fafafa;
+  mix-blend-mode: overlay;
+}
+.twitter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+}
+main{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.banner img, footer ul li img{
+	width: 100%;
+}
+.banner{
+	max-width: 50%;
+	padding: 30px;
+}
+.form__area{
+	width:50%;
+	padding: 80px;
+}
+footer{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+footer ul li{
+	display: inline-block;
+	width: 60px;
+	margin-right: 20px;
+}
+.form__area h2, .form__area textarea{
+	margin-bottom: 20px;
+}
+input.btn{
+	background: #00BFA6;
+}
+.form-control:focus{border-color: #00BFA6;  box-shadow: none; -webkit-box-shadow: none;} 
+
+	</style>
+</head>
+<body>
+	
+	<header>
+		<div class="menu">
+			<p><a href="">Home</a></p>
+			<p><a href="">About</a></p>
+			<p><a href="">Contact</a></p>
+		</div>	
+		<div class="menu__toggler">
+			<span></span>
+		</div>
+	</header>
+
+	<main>
+		<div class="banner">
+			<img src="media/undraw_contact_us_15o2.svg">
+		</div>
+		<div class="form__area">
+			<h2>Contact Us</h2>
+			
+
+			<form>
+				
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Your Name"></input>
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Subject"></input>
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Your Email"></input>
+				</div>
+				<div class="form-group">
+					<textarea class="form-control" rows="3" placeholder="Message"></textarea>
+				</div>
+
+				<input class="btn" type="submit" value="Send">
+			</form>
+		</div>
+	</main>
+
+	<footer>
+		<ul>
+			<li>
+				<a href="#">
+					<img src="media/icons8-facebook.svg">
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="media/icons8-twitter.svg">
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="media/icons8-whatsapp.svg">
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img src="media/icons8-map-pinpoint-100.png">
+				</a>
+			</li>
+		</ul>
+	</footer>
+	
+
+	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		const toggler = document.querySelector('.menu__toggler');
+		const menu    = document.querySelector('.menu');
+
+		/*
+		 * Toggles on and off the 'active' class on the menu
+		 * and the toggler button.
+		 */
+		toggler.addEventListener('click', () => {
+		  toggler.classList.toggle('active');
+		  menu.classList.toggle('active');
+		})
+	</script>
+</body>
+</html>
